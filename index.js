@@ -114,6 +114,14 @@ server.post('/write', upload.none(), (req, res) => {
     res.status(201).send('Note created');
 });
 
+server.delete('/notes/:name', (req, res) => {
+    const filePath = path.join(cachePath, req.params.name);
+    if (!fs.existsSync(filePath)) {
+        return res.status(404).send('Note Not Found');
+    }
+    fs.unlinkSync(filePath);
+    res.send('Note deleted!');
+});
 
 // GET /UploadForm.html
 server.get('/UploadForm.html', (req, res) => {
