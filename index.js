@@ -5,7 +5,6 @@ const { program } = require('commander');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 
-// Налаштування multer
 
 
 program
